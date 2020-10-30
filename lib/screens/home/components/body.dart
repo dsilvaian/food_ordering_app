@@ -14,7 +14,7 @@ class Body extends StatelessWidget {
           onChanged: (value) {},
         ),
         CategoryList(),
-        ItemList(),
+        // ItemList(),
         DiscountCard(),
       ],
     );
