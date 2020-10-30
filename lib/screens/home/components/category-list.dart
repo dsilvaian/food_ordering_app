@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'category-items.dart';
 
-class CategoryList extends StatelessWidget {
-  const CategoryList({
-    Key key,
-  }) : super(key: key);
+class CategoryList extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _CategoryListState();
+  }
+}
+
+class _CategoryListState extends State<CategoryList> {
+  int selected = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +20,48 @@ class CategoryList extends StatelessWidget {
         children: <Widget>[
           CategoryItem(
             title: "Combo Meal",
-            isActive: true,
-            press: () {},
+            isActive: selected == 1 ? true : false,
+            press: () {
+              setState(() {
+                selected = 1;
+              });
+            },
           ),
           CategoryItem(
             title: "Non Veg",
-            press: () {},
+            isActive: selected == 2 ? true : false,
+            press: () {
+              setState(() {
+                selected = 2;
+              });
+            },
           ),
           CategoryItem(
             title: "Veg",
-            press: () {},
+            isActive: selected == 3 ? true : false,
+            press: () {
+              setState(() {
+                selected = 3;
+              });
+            },
           ),
           CategoryItem(
             title: "Snacks & Sides",
-            press: () {},
+            isActive: selected == 4 ? true : false,
+            press: () {
+              setState(() {
+                selected = 4;
+              });
+            },
           ),
           CategoryItem(
             title: "Beverages",
-            press: () {},
+            isActive: selected == 5 ? true : false,
+            press: () {
+              setState(() {
+                selected = 5;
+              });
+            },
           ),
         ],
       ),
