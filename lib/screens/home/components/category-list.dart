@@ -18,10 +18,8 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   void initState() {
-    // categoryItemsList = await getItemDetails(selected);
-    clickCategory(s: selected);
-    // print("Over\n\n\n\n");
     super.initState();
+    clickCategory(s: selected);
   }
 
   @override
@@ -88,7 +86,7 @@ class _CategoryListState extends State<CategoryList> {
         ),
         Column(
           children: <Widget>[
-            ItemList(),
+            ItemList(items: categoryItemsList),
           ],
         ),
       ],
