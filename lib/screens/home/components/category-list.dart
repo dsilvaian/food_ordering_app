@@ -88,7 +88,6 @@ class _CategoryListState extends State<CategoryList> {
           future: getItemDetails(selected),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              debugPrint('Step 3, build widget: ${snapshot.data}');
               return Column(
                 children: <Widget>[
                   ItemList(items: categoryItemsList),
@@ -128,11 +127,6 @@ class _CategoryListState extends State<CategoryList> {
                 }
               })
             });
-    print("Over\n\n\n\n");
-    items.forEach((item) {
-      print(item);
-      print("\n");
-    });
     return items;
   }
 

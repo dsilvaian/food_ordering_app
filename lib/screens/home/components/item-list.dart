@@ -11,12 +11,9 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("******************");
-    print(items);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: getItemCards(items: items),
-
+      child: getItemCards(items: items, context: context),
       // child: Row(
       // children: <Widget>[
       // ItemCard(
@@ -51,7 +48,7 @@ class ItemList extends StatelessWidget {
     );
   }
 
-  Widget getItemCards({List items}) {
+  Widget getItemCards({List items, BuildContext context}) {
     return new Row(
         // crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -60,6 +57,16 @@ class ItemList extends StatelessWidget {
                   title: item["Item"],
                   shopName: item["Shop"],
                   svgSrc: "assets/icons/chinese_noodles.svg",
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return DetailsScreen(item: item);
+                        },
+                      ),
+                    );
+                  },
                 ))
             .toList());
   }
