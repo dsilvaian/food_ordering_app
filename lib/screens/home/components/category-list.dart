@@ -84,10 +84,20 @@ class _CategoryListState extends State<CategoryList> {
             ],
           ),
         ),
-        Column(
-          children: <Widget>[
-            ItemList(items: categoryItemsList),
-          ],
+        FutureBuilder(
+          future: getItemDetails(selected),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              debugPrint('Step 3, build widget: ${snapshot.data}');
+              return Column(
+                children: <Widget>[
+                  ItemList(items: categoryItemsList),
+                ],
+              );
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
         ),
       ],
     );
