@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:food_ordering_app/constraints.dart';
-import 'package:food_ordering_app/screens/home/home-screen.dart';
+import 'package:food_ordering_app/screens/auth/login_page.dart';
+
+// import 'package:food_ordering_app/screens/home/home-screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
             bodyText2: TextStyle(color: ksecondaryColor)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: LoginPage(),
     );
   }
 }
