@@ -14,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightGreenAccent[700],
+        color: Colors.amberAccent[400],
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.red,
+      splashColor: Colors.deepOrange,
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Sign in with Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.redAccent,
+                  color: Colors.black,
                 ),
               ),
             )
