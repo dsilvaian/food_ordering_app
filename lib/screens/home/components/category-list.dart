@@ -13,7 +13,6 @@ class CategoryList extends StatefulWidget {
 
 class _CategoryListState extends State<CategoryList> {
   int selected = 1;
-  // Future<List> categoryItemsList;
   List categoryItemsList;
 
   @override

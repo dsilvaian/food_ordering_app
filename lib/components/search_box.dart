@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:search_widget/search_widget.dart';
 
-class SearchBox extends StatelessWidget {
-  final List<LeaderBoard> data = <LeaderBoard>[
-    LeaderBoard("Asd", 54),
-    LeaderBoard("React", 22.5),
-    LeaderBoard("Ionic", 24.7),
-    LeaderBoard("Xamarin", 22.1),
-  ];
+import 'search-items.dart';
+
+class SearchBox extends StatefulWidget {
+  final List<FoodItems> data;
+  const SearchBox(this.data);
+
+  @override
+  _SearchBoxState createState() => _SearchBoxState(data);
+}
+
+class _SearchBoxState extends State<SearchBox> {
+  _SearchBoxState(this.data);
+  final List<FoodItems> data;
+
+  // final List data;
+
+  // final List<FoodItems> data = <FoodItems>[
+  //   FoodItems("Asd", 54),
+  //   FoodItems("React", 22.5),
+  //   FoodItems("Ionic", 24.7),
+  //   FoodItems("Xamarin", 22.1),
+  // ];
 
   @override
   Widget build(BuildContext context) {
-    return SearchWidget<LeaderBoard>(
+    return SearchWidget<FoodItems>(
       dataList: data,
       hideSearchBoxWhenItemSelected: false,
       listContainerHeight: MediaQuery.of(context).size.height / 4,
       queryBuilder: (query, list) {
         return list
             .where((item) =>
-                item.username.toLowerCase().contains(query.toLowerCase()))
+                item.item["Item"].toLowerCase().contains(query.toLowerCase()))
             .toList();
       },
       popupListItemBuilder: (item) {
@@ -42,17 +57,10 @@ class SearchBox extends StatelessWidget {
   }
 }
 
-class LeaderBoard {
-  LeaderBoard(this.username, this.score);
-
-  final String username;
-  final double score;
-}
-
 class SelectedItemWidget extends StatelessWidget {
   const SelectedItemWidget(this.selectedItem, this.deleteSelectedItem);
 
-  final LeaderBoard selectedItem;
+  final FoodItems selectedItem;
   final VoidCallback deleteSelectedItem;
 
   @override
@@ -73,7 +81,7 @@ class SelectedItemWidget extends StatelessWidget {
                 bottom: 8,
               ),
               child: Text(
-                selectedItem.username,
+                selectedItem.item["Item"],
                 style: const TextStyle(fontSize: 14),
               ),
             ),
@@ -154,14 +162,14 @@ class NoItemsFound extends StatelessWidget {
 class PopupListItemWidget extends StatelessWidget {
   const PopupListItemWidget(this.item);
 
-  final LeaderBoard item;
+  final FoodItems item;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(12),
       child: Text(
-        item.username,
+        item.item["Item"],
         style: const TextStyle(fontSize: 16),
       ),
     );
