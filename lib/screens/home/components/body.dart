@@ -9,7 +9,7 @@ import 'package:food_ordering_app/screens/home/components/discount-card.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<FoodItems> items;
+    // List<FoodItems> items;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

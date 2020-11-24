@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ordering_app/screens/details/details-screen.dart';
 import 'package:search_widget/search_widget.dart';
 
 import 'search-items.dart';
@@ -14,15 +15,6 @@ class SearchBox extends StatefulWidget {
 class _SearchBoxState extends State<SearchBox> {
   _SearchBoxState(this.data);
   final List<FoodItems> data;
-
-  // final List data;
-
-  // final List<FoodItems> data = <FoodItems>[
-  //   FoodItems("Asd", 54),
-  //   FoodItems("React", 22.5),
-  //   FoodItems("Ionic", 24.7),
-  //   FoodItems("Xamarin", 22.1),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +40,15 @@ class _SearchBoxState extends State<SearchBox> {
         return MyTextField(controller, focusNode);
       },
       onItemSelected: (item) {
-        print("Item");
-        // setState(() {
-        //   _selectedItem = item;
-        // });
+        // print("Item");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return DetailsScreen(item: item.item);
+            },
+          ),
+        );
       },
     );
   }

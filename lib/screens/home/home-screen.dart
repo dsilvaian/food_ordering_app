@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: homeAppBar(context),
       bottomNavigationBar: BottomNavBar(),
       body: Body(),
