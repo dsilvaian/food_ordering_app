@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/constraints.dart';
 
-AppBar homeAppBar(BuildContext context) {
+AppBar homeAppBar(BuildContext context, GlobalKey<ScaffoldState> skey) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 1,
     leading: IconButton(
       icon: SvgPicture.asset("assets/icons/menu.svg"),
-      onPressed: () {},
+      onPressed: () {
+        skey.currentState.openDrawer();
+      },
     ),
     title: RichText(
       text: TextSpan(
