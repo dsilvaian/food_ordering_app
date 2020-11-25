@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:food_ordering_app/constraints.dart';
 import 'package:food_ordering_app/screens/auth/login_page.dart';
+import 'package:food_ordering_app/screens/cart/cart-screen.dart';
 import 'package:food_ordering_app/screens/home/home-screen.dart';
 
 // import 'package:food_ordering_app/screens/home/home-screen.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: LoginPage(),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: CartPage(),
     );
   }
 }
