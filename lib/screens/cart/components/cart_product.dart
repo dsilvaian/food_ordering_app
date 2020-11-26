@@ -19,16 +19,6 @@ class CartProduct extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
 
     return Container(
-      // width: MediaQuery.of(context).size.width,
-      // height: 130,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Color(0xFFfae3e2).withOpacity(0.3),
-          spreadRadius: 1,
-          blurRadius: 1,
-          offset: Offset(0, 1),
-        ),
-      ]),
       child: Card(
           color: Colors.white,
           elevation: 0,
@@ -77,9 +67,9 @@ class CartProduct extends StatelessWidget {
                                     child: Text(
                                       "$name",
                                       style: TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           color: Color(0xFF3a3a3b),
-                                          fontWeight: FontWeight.w400),
+                                          fontWeight: FontWeight.w300),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -90,9 +80,9 @@ class CartProduct extends StatelessWidget {
                                     child: Text(
                                       "\$$price",
                                       style: TextStyle(
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           color: Color(0xFF3a3a3b),
-                                          fontWeight: FontWeight.w400),
+                                          fontWeight: FontWeight.w300),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
@@ -160,11 +150,11 @@ class AddToCartMenu extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'In Cart $productCounter',
+                  'In Cart: $productCounter',
                   style: new TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 14.0,
                       color: Colors.white,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w600),
                 ),
               ),
             ),

@@ -33,7 +33,7 @@ class TotalCalculationWidget extends StatelessWidget {
           title: Text("Total"),
           trailing: Text(
             "\$$totalPrice",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         )
       ],
