@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/constraints.dart';
+import 'package:provider/provider.dart';
 
 import '../cart_model.dart';
 
@@ -15,6 +16,8 @@ class CartProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     return Container(
       // width: MediaQuery.of(context).size.width,
       // height: 130,
@@ -103,14 +106,16 @@ class CartProduct extends StatelessWidget {
                                 alignment: Alignment.centerRight,
                                 child: IconButton(
                                   icon: Icon(Icons.delete),
-                                  onPressed: null,
+                                  onPressed: () {
+                                    cart.removeItem(productId);
+                                  },
                                 ))
                           ],
                         ),
                         Container(
                           // margin: EdgeInsets.only(left: 20),
                           // alignment: Alignment.centerRight,
-                          child: AddToCartMenu(quantity),
+                          child: AddToCartMenu(productId, quantity),
                         )
                       ],
                     )),
@@ -123,17 +128,22 @@ class CartProduct extends StatelessWidget {
 
 class AddToCartMenu extends StatelessWidget {
   final int productCounter;
+  final String productId;
 
-  AddToCartMenu(this.productCounter);
+  AddToCartMenu(this.productId, this.productCounter);
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              cart.removeSingleItem(productId);
+            },
             icon: Icon(Icons.remove),
             color: Colors.black,
             iconSize: 18,
@@ -160,7 +170,9 @@ class AddToCartMenu extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              cart.addSingleItem(productId);
+            },
             icon: Icon(Icons.add),
             color: kPrimaryColor,
             iconSize: 18,

@@ -48,6 +48,24 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  void addSingleItem(String productId) {
+    // Check if Item is already in Cart
+    if (_items.containsKey(productId)) {
+      // Increment the Item Quantity
+      _items.update(
+          productId,
+          (existingItem) => CartItem(
+              id: DateTime.now().toString(),
+              name: existingItem.name,
+              quantity: existingItem.quantity + 1,
+              price: existingItem.price));
+    } else {
+      return;
+    }
+
+    notifyListeners();
+  }
+
   // Remove an Product from the cart
   void removeItem(String productId) {
     _items.remove(productId);
@@ -58,6 +76,11 @@ class Cart with ChangeNotifier {
   void removeSingleItem(String productId) {
     // Check if Item Exists
     if (!_items.containsKey(productId)) {
+      return;
+    }
+
+    if (_items[productId].quantity == 1) {
+      removeItem(productId);
       return;
     }
 
