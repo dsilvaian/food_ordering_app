@@ -11,13 +11,13 @@ class CartProduct extends StatelessWidget {
   final int quantity;
   final double price;
 
-  CartProduct(this.productId, this.id, this.name, this.quantity, this.price);
+  CartProduct(this.id, this.productId, this.name, this.quantity, this.price);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 130,
+      // width: MediaQuery.of(context).size.width,
+      // height: 130,
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
           color: Color(0xFFfae3e2).withOpacity(0.3),
@@ -96,7 +96,6 @@ class CartProduct extends StatelessWidget {
                         //   width: 40,
                         // ),
                         // Container(
-                        //     color: Colors.red,
                         //     alignment: Alignment.centerRight,
                         //     child: IconButton(
                         //       icon: Icon(Icons.delete),

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../cart_model.dart';
 
 class TotalCalculationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     return Container(
       alignment: Alignment.center,
       width: double.infinity,

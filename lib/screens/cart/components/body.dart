@@ -2,9 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_ordering_app/constraints.dart';
+import 'package:food_ordering_app/screens/cart/cart_model.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_product.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_promo.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_total.dart';
+import 'package:provider/provider.dart';
 
 class CartPageBody extends StatelessWidget {
   @override
@@ -12,8 +14,13 @@ class CartPageBody extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+
+    final cart = Provider.of<Cart>(context);
+
     return SingleChildScrollView(
       child: Container(
+        // width: MediaQuery.of(context).size.width,
+        // height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,8 +39,27 @@ class CartPageBody extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            CartProduct("123", "burger1", "Burger", 1, 2),
-            CartProduct("123", "burger1", "Burger Noodels", 50, 3),
+            // CartProduct("123", "burger1", "Burger", 1, 2),
+            // CartProduct("123", "burger1", "Burger Noodels", 50, 3),
+            // Expanded(
+            //   child: ListView.builder(
+            //       itemCount: cart.items.length,
+            //       itemBuilder: (context, index) {
+            //         String key = cart.items.keys.elementAt(index);
+            //         CartItem _item = cart.items[key];
+            //         return CartProduct(
+            //             _item.id, key, _item.name, _item.quantity, _item.price);
+            //       }),
+            // ),
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: cart.items.length,
+                itemBuilder: (context, index) {
+                  String key = cart.items.keys.elementAt(index);
+                  CartItem _item = cart.items[key];
+                  return CartProduct(
+                      _item.id, key, _item.name, _item.quantity, _item.price);
+                }),
             SizedBox(
               height: 10,
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/constraints.dart';
+import 'package:food_ordering_app/screens/cart/cart-screen.dart';
 
 AppBar homeAppBar(BuildContext context, GlobalKey<ScaffoldState> skey) {
   return AppBar(
@@ -33,7 +34,19 @@ AppBar homeAppBar(BuildContext context, GlobalKey<ScaffoldState> skey) {
       IconButton(
         icon: SvgPicture.asset("assets/icons/notification.svg"),
         onPressed: () {},
-      )
+      ),
+      IconButton(
+        icon: Icon(
+          Icons.shopping_cart,
+          size: 30,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CartPage()),
+          );
+        },
+      ),
     ],
   );
 }
