@@ -52,6 +52,7 @@ class CartPageBody extends StatelessWidget {
             //       }),
             // ),
             ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: cart.items.length,
                 itemBuilder: (context, index) {
