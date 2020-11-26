@@ -52,64 +52,68 @@ class CartProduct extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 50),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                Expanded(
+                    flex: 1,
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
-                            Container(
-                              child: Text(
-                                "$name",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: Color(0xFF3a3a3b),
-                                    fontWeight: FontWeight.w400),
-                                textAlign: TextAlign.left,
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    child: Text(
+                                      "$name",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xFF3a3a3b),
+                                          fontWeight: FontWeight.w400),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      "\$$price",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Color(0xFF3a3a3b),
+                                          fontWeight: FontWeight.w400),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             SizedBox(
-                              height: 5,
+                              width: 40,
                             ),
                             Container(
-                              child: Text(
-                                "\$$price",
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    color: Color(0xFF3a3a3b),
-                                    fontWeight: FontWeight.w400),
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
+                                alignment: Alignment.centerRight,
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: null,
+                                ))
                           ],
                         ),
-
-                        // SizedBox(
-                        //   width: 40,
-                        // ),
-                        // Container(
-                        //     alignment: Alignment.centerRight,
-                        //     child: IconButton(
-                        //       icon: Icon(Icons.delete),
-                        //       onPressed: null,
-                        //     ))
+                        Container(
+                          // margin: EdgeInsets.only(left: 20),
+                          // alignment: Alignment.centerRight,
+                          child: AddToCartMenu(quantity),
+                        )
                       ],
-                    ),
-                    Container(
-                      // margin: EdgeInsets.only(left: 20),
-                      // alignment: Alignment.centerRight,
-                      child: AddToCartMenu(quantity),
-                    )
-                  ],
-                )
+                    )),
               ],
             ),
           )),

@@ -38,94 +38,49 @@ class TotalCalculationWidget extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: <Widget>[
-              //     Text(
-              //       "Grilled Salmon",
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: Color(0xFF3a3a3b),
-              //           fontWeight: FontWeight.w400),
-              //       textAlign: TextAlign.left,
-              //     ),
-              //     Text(
-              //       "\$192",
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: Color(0xFF3a3a3b),
-              //           fontWeight: FontWeight.w400),
-              //       textAlign: TextAlign.left,
-              //     )
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 15,
-              // ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: cart.items.length,
-                itemBuilder: (context, index) {
-                  String key = cart.items.keys.elementAt(index);
-                  CartItem _item = cart.items[key];
+              Expanded(
+                flex: 1,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: cart.items.length,
+                  itemBuilder: (context, index) {
+                    String key = cart.items.keys.elementAt(index);
+                    CartItem _item = cart.items[key];
 
-                  final String unitName = _item.name;
-                  final double unitPrice = _item.price * _item.quantity;
+                    final String unitName = _item.name;
+                    final double unitPrice = _item.price * _item.quantity;
 
-                  return Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "$unitName",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFF3a3a3b),
-                                fontWeight: FontWeight.w400),
-                            textAlign: TextAlign.left,
-                          ),
-                          Text(
-                            "\$$unitPrice",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFF3a3a3b),
-                                fontWeight: FontWeight.w400),
-                            textAlign: TextAlign.left,
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                    ],
-                  );
-                },
+                    return Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "$unitName",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFF3a3a3b),
+                                  fontWeight: FontWeight.w400),
+                              textAlign: TextAlign.left,
+                            ),
+                            Text(
+                              "\$$unitPrice",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFF3a3a3b),
+                                  fontWeight: FontWeight.w400),
+                              textAlign: TextAlign.left,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: <Widget>[
-              //     Text(
-              //       "Meat vegetable",
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: Color(0xFF3a3a3b),
-              //           fontWeight: FontWeight.w400),
-              //       textAlign: TextAlign.left,
-              //     ),
-              //     Text(
-              //       "\$102",
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: Color(0xFF3a3a3b),
-              //           fontWeight: FontWeight.w400),
-              //       textAlign: TextAlign.left,
-              //     )
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 15,
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
