@@ -41,7 +41,6 @@ class TotalCalculationWidget extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ListView.builder(
-                  shrinkWrap: true,
                   itemCount: cart.items.length,
                   itemBuilder: (context, index) {
                     String key = cart.items.keys.elementAt(index);
@@ -55,13 +54,19 @@ class TotalCalculationWidget extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text(
-                              "$unitName",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Color(0xFF3a3a3b),
-                                  fontWeight: FontWeight.w400),
-                              textAlign: TextAlign.left,
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "$unitName",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xFF3a3a3b),
+                                    fontWeight: FontWeight.w400),
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
                             ),
                             Text(
                               "\$$unitPrice",
