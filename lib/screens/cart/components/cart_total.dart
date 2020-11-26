@@ -8,6 +8,8 @@ class TotalCalculationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
 
+    final totalPrice = cart.totalAmount;
+
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
@@ -36,54 +38,94 @@ class TotalCalculationWidget extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "Grilled Salmon",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF3a3a3b),
-                        fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
-                  ),
-                  Text(
-                    "\$192",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF3a3a3b),
-                        fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
-                  )
-                ],
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: <Widget>[
+              //     Text(
+              //       "Grilled Salmon",
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           color: Color(0xFF3a3a3b),
+              //           fontWeight: FontWeight.w400),
+              //       textAlign: TextAlign.left,
+              //     ),
+              //     Text(
+              //       "\$192",
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           color: Color(0xFF3a3a3b),
+              //           fontWeight: FontWeight.w400),
+              //       textAlign: TextAlign.left,
+              //     )
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 15,
+              // ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: cart.items.length,
+                itemBuilder: (context, index) {
+                  String key = cart.items.keys.elementAt(index);
+                  CartItem _item = cart.items[key];
+
+                  final String unitName = _item.name;
+                  final double unitPrice = _item.price * _item.quantity;
+
+                  return Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "$unitName",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF3a3a3b),
+                                fontWeight: FontWeight.w400),
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            "\$$unitPrice",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF3a3a3b),
+                                fontWeight: FontWeight.w400),
+                            textAlign: TextAlign.left,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  );
+                },
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "Meat vegetable",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF3a3a3b),
-                        fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
-                  ),
-                  Text(
-                    "\$102",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF3a3a3b),
-                        fontWeight: FontWeight.w400),
-                    textAlign: TextAlign.left,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: <Widget>[
+              //     Text(
+              //       "Meat vegetable",
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           color: Color(0xFF3a3a3b),
+              //           fontWeight: FontWeight.w400),
+              //       textAlign: TextAlign.left,
+              //     ),
+              //     Text(
+              //       "\$102",
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           color: Color(0xFF3a3a3b),
+              //           fontWeight: FontWeight.w400),
+              //       textAlign: TextAlign.left,
+              //     )
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 15,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -96,7 +138,7 @@ class TotalCalculationWidget extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    "\$292",
+                    "\$$totalPrice",
                     style: TextStyle(
                         fontSize: 18,
                         color: Color(0xFF3a3a3b),
