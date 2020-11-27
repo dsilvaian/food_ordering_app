@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
                 bodyText2: TextStyle(color: ksecondaryColor)),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: LoginPage(),
-          // home: HomeScreen(),
+          // home: LoginPage(),
+          home: HomeScreen(),
           // home: CartPage(),
         ));
   }

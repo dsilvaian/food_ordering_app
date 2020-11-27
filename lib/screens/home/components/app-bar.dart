@@ -6,7 +6,7 @@ import 'package:food_ordering_app/screens/cart/cart-screen.dart';
 AppBar homeAppBar(BuildContext context, GlobalKey<ScaffoldState> skey) {
   return AppBar(
     backgroundColor: Colors.white,
-    elevation: 1,
+    elevation: 0,
     leading: IconButton(
       icon: SvgPicture.asset("assets/icons/menu.svg"),
       onPressed: () {
