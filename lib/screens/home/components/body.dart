@@ -41,7 +41,10 @@ class Body extends StatelessWidget {
         .get()
         .then((QuerySnapshot querySnapshot) => {
               querySnapshot.docs.forEach((doc) {
-                items.add(FoodItems(doc.data()));
+                // print(doc.id);
+                var data = doc.data();
+                data["productId"] = doc.id;
+                items.add(FoodItems(data));
               })
             });
     return items;

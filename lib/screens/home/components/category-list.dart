@@ -122,7 +122,9 @@ class _CategoryListState extends State<CategoryList> {
         .then((QuerySnapshot querySnapshot) => {
               querySnapshot.docs.forEach((doc) {
                 if (doc.data()["Category"] == category) {
-                  items.add(doc.data());
+                  var data = doc.data();
+                  data["productId"] = doc.id;
+                  items.add(data);
                 }
               })
             });

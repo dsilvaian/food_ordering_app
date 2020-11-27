@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:food_ordering_app/constraints.dart';
+import 'package:food_ordering_app/screens/cart/cart_model.dart';
 import 'package:food_ordering_app/screens/details/components/order-button.dart';
 import 'package:food_ordering_app/screens/details/components/title-price-rating.dart';
+import 'package:provider/provider.dart';
 
 class ItemInfo extends StatelessWidget {
   final Map item;
@@ -12,6 +16,8 @@ class ItemInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     return Container(
       padding: EdgeInsets.all(20),
       width: double.infinity,
@@ -38,7 +44,9 @@ class ItemInfo extends StatelessWidget {
             // "But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure.",
             style: TextStyle(height: 1.3),
           ),
-          OrderButton(press: () {}),
+          OrderButton(press: () {
+            cart.addItem(item["productId"], item["Item"], item["Price"]);
+          }),
         ],
       ),
     );
