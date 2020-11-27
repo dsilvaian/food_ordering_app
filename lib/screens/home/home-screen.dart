@@ -16,10 +16,13 @@ class HomeScreen extends StatelessWidget {
     ]);
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       appBar: homeAppBar(context, _scaffoldKey),
       bottomNavigationBar: BottomNavBar(),
-      body: Body(),
+      body: SingleChildScrollView(
+        child: Body(),
+      ),
       drawer: homeDrawer(context),
     );
   }
