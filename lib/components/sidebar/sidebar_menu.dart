@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/components/sidebar/sidebar_menu_item.dart';
 
 class SideBarMenu extends StatelessWidget {
-  const SideBarMenu({Key key}) : super(key: key);
+  final Function onMenuItemPressed;
+
+  const SideBarMenu({Key key, this.onMenuItemPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class SideBarMenu extends StatelessWidget {
         ),
         ListTile(
           title: Text(
-            "Ralph",
+            "User",
             style: TextStyle(
               color: Colors.white,
               fontSize: 30,
@@ -22,7 +24,7 @@ class SideBarMenu extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            "ralph@email.com",
+            "user@email.com",
             style: TextStyle(
               color: Colors.white.withOpacity(0.5),
               fontSize: 20,
@@ -45,16 +47,24 @@ class SideBarMenu extends StatelessWidget {
           endIndent: 32,
         ),
         SideBarMenuItem(
-          icon: Icons.home,
-          title: "Home",
-        ),
+            icon: Icons.home,
+            title: "Home",
+            onTap: () {
+              onMenuItemPressed();
+            }),
         SideBarMenuItem(
           icon: Icons.shopping_bag,
           title: "My Orders",
+          onTap: () {
+            onMenuItemPressed();
+          },
         ),
         SideBarMenuItem(
           icon: Icons.person,
           title: "My Account",
+          onTap: () {
+            onMenuItemPressed();
+          },
         ),
         Divider(
           height: 64,
