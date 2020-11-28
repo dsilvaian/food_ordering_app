@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_ordering_app/components/sidebar/sidebar_layout.dart';
 import 'package:food_ordering_app/screens/auth/sign_in.dart';
 import '../home/home-screen.dart';
 
@@ -37,10 +38,10 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return HomeScreen();
+                  return SideBarLayout();
                 },
               ),
             );

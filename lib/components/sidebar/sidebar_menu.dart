@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ordering_app/components/sidebar/sidebar_menu_item.dart';
+
+import 'sidebar_menu_item.dart';
+import '../../screens/auth/login_page.dart';
+import '../../screens/auth/sign_in.dart';
 
 class SideBarMenu extends StatelessWidget {
   final Function onMenuItemPressed;
@@ -76,6 +79,13 @@ class SideBarMenu extends StatelessWidget {
         SideBarMenuItem(
           icon: Icons.exit_to_app,
           title: "Logout",
+          onTap: () {
+            signOutGoogle();
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) {
+              return LoginPage();
+            }), ModalRoute.withName('/'));
+          },
         ),
       ],
     );
