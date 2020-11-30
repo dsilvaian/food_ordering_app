@@ -115,7 +115,6 @@ class _CategoryListState extends State<CategoryList> {
       category = "Beverage";
     }
     List items = [];
-    await Firebase.initializeApp();
     await FirebaseFirestore.instance
         .collection('Items')
         .get()

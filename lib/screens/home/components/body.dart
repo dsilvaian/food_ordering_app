@@ -35,7 +35,6 @@ class Body extends StatelessWidget {
 
   Future<List> getItemDetails() async {
     List<FoodItems> items = [];
-    await Firebase.initializeApp();
     await FirebaseFirestore.instance
         .collection('Items')
         .get()
