@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:food_ordering_app/constraints.dart';
-import 'package:food_ordering_app/screens/cart/cart_model.dart';
+import 'package:food_ordering_app/services/cart_service.dart';
 import 'package:food_ordering_app/screens/details/components/order-button.dart';
 import 'package:food_ordering_app/screens/details/components/title-price-rating.dart';
 import 'package:provider/provider.dart';

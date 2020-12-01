@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/constraints.dart';
 import 'package:provider/provider.dart';
 
-import '../cart_model.dart';
+import '../../../services/cart_service.dart';
 
 class CartProduct extends StatelessWidget {
   final String productId;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../cart_model.dart';
+import '../../../services/cart_service.dart';
 
 class TotalCalculationWidget extends StatelessWidget {
   @override
