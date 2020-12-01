@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:food_ordering_app/constraints.dart';
-import 'package:food_ordering_app/screens/cart/cart_model.dart';
+import 'constraints.dart';
+import 'screens/cart/cart_model.dart';
+import 'services/auth_service.dart';
 
-import 'package:food_ordering_app/screens/auth/login_page.dart';
-import 'package:food_ordering_app/screens/cart/cart-screen.dart';
-import 'package:food_ordering_app/screens/home/home-screen.dart';
-import 'package:food_ordering_app/components/sidebar/sidebar_layout.dart';
+import 'screens/auth/login_page.dart';
+import 'screens/cart/cart-screen.dart';
+import 'screens/home/home-screen.dart';
+import 'components/sidebar/sidebar_layout.dart';
 
 // import 'package:food_ordering_app/screens/home/home-screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -21,7 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider.value(value: Cart())],
+        providers: [
+          Provider<AuthService>(
+            create: (_) => AuthService(
+              FirebaseAuth.instance,
+              GoogleSignIn(),
+            ),
+          ),
+          StreamProvider(
+            create: (context) => context.read<AuthService>().authStateChanges,
+          ),
+          ChangeNotifierProvider.value(value: Cart()),
+        ],
         child: MaterialApp(
           title: 'Food App',
           // debugShowCheckedModeBanner: false,

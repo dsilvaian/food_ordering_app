@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ordering_app/components/sidebar/sidebar_layout.dart';
-import 'package:food_ordering_app/screens/auth/sign_in.dart';
+
+import 'package:provider/provider.dart';
+
+import '../../services/auth_service.dart';
+import '../../components/sidebar/sidebar_layout.dart';
 import '../home/home-screen.dart';
 
 class LoginPage extends StatefulWidget {
@@ -36,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     return OutlineButton(
       splashColor: Colors.deepOrange,
       onPressed: () {
-        signInWithGoogle().then((result) {
+        context.read<AuthService>().signInWithGoogle().then((result) {
           if (result != null) {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(

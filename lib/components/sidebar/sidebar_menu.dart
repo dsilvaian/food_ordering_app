@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:provider/provider.dart';
+
+import '../../services/auth_service.dart';
+
 import 'sidebar_menu_item.dart';
 import '../../screens/auth/login_page.dart';
-import '../../screens/auth/sign_in.dart';
 
 class SideBarMenu extends StatelessWidget {
   final Function onMenuItemPressed;
@@ -80,7 +83,7 @@ class SideBarMenu extends StatelessWidget {
           icon: Icons.exit_to_app,
           title: "Logout",
           onTap: () {
-            signOutGoogle();
+            context.read<AuthService>().signOutGoogle();
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (context) {
               return LoginPage();
