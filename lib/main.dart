@@ -6,8 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'constraints.dart';
-import 'screens/cart/cart_model.dart';
+
+import 'services/cart_service.dart';
 import 'services/auth_service.dart';
+import 'services/order_service.dart';
 
 import 'screens/auth/login_page.dart';
 import 'screens/cart/cart-screen.dart';
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
             create: (context) => context.read<AuthService>().authStateChanges,
           ),
           ChangeNotifierProvider.value(value: Cart()),
+          ChangeNotifierProvider.value(value: Order()),
         ],
         child: MaterialApp(
           title: 'Food App',
