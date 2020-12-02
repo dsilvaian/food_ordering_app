@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_ordering_app/services/cart_service.dart';
@@ -35,18 +37,26 @@ class Order with ChangeNotifier {
     String orderId = uuid.v1();
     DateTime dateTime = DateTime.now();
 
+    // Map<String, dynamic> orderData = {
+    //   "userId": userId,
+    //   "orderId": orderId,
+    //   "dateTime": dateTime.toIso8601String(),
+    //   "orderItems": cart
+    //       .map((cartItem) => {
+    //             "foodItemId": cartItem.id,
+    //             "foodItemName": cartItem.name,
+    //             "quantity": cartItem.quantity.toString(),
+    //             "price": cartItem.price.toString(),
+    //           })
+    //       .toList(),
+    //   "totalAmount": totalAmount,
+    // };
+
     Map<String, dynamic> orderData = {
       "userId": userId,
       "orderId": orderId,
       "dateTime": dateTime.toIso8601String(),
-      "orderItems": cart
-          .map((cartItem) => {
-                "foodItemId": cartItem.id,
-                "foodItemName": cartItem.name,
-                "quantity": cartItem.quantity.toString(),
-                "price": cartItem.price.toString(),
-              })
-          .toList(),
+      "orderItems": cart.map((cartItem) => cartItem.toJson()).toList(),
       "totalAmount": totalAmount,
     };
 
