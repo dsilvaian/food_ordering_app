@@ -10,6 +10,7 @@ import 'constraints.dart';
 import 'services/cart_service.dart';
 import 'services/auth_service.dart';
 import 'services/order_service.dart';
+import 'services/notification_service.dart';
 
 import 'screens/auth/login_page.dart';
 import 'screens/cart/cart-screen.dart';
@@ -22,6 +23,7 @@ import 'screens/checkout/checkout.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -39,6 +41,9 @@ class MyApp extends StatelessWidget {
           ),
           StreamProvider(
             create: (context) => context.read<AuthService>().authStateChanges,
+          ),
+          Provider<NotificationService>(
+            create: (_) => NotificationService(),
           ),
           ChangeNotifierProvider.value(value: Cart()),
           ChangeNotifierProvider.value(value: Order()),

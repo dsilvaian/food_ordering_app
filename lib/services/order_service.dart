@@ -72,14 +72,14 @@ class Order with ChangeNotifier {
         .add(orderData)
         .then((value) => {
               this._orders.putIfAbsent(
-                  value.toString(),
+                  value.id,
                   () => OrderItem(
                         userId,
                         orderId,
                         cart,
                         dateTime,
                       )),
-              message = "Order Placed"
+              message = value.id
             });
 
     notifyListeners();

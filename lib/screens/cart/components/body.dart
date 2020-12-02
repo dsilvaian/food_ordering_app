@@ -61,12 +61,6 @@ class CartPageBody extends StatelessWidget {
               TotalCalculationWidget(),
               CartCheckoutButton(press: () async {
                 User user = context.read<User>();
-                await order.placeOrder(
-                  user.uid,
-                  cart.items.values.toList(),
-                  cart.totalAmount,
-                );
-
                 Address address = await order.getLocationAddress();
 
                 String username = user.displayName;

@@ -42,6 +42,7 @@ dependencies:
 
   geocoder: ^0.2.1
   location: ^3.1.0
+  flutter_local_notifications: ^3.0.1+6
   # geolocation: ^1.1.2
 
 dev_dependencies:
