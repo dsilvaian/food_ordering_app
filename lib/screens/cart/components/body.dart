@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ordering_app/constraints.dart';
+import 'package:food_ordering_app/screens/checkout/checkout.dart';
 import 'package:food_ordering_app/services/cart_service.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_product.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_promo.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_total.dart';
 import 'package:food_ordering_app/screens/cart/components/cart_checkout_button.dart';
 import 'package:food_ordering_app/services/order_service.dart';
+import 'package:geocoder/geocoder.dart';
 import 'package:provider/provider.dart';
 
 class CartPageBody extends StatelessWidget {
@@ -57,14 +59,37 @@ class CartPageBody extends StatelessWidget {
               PromoCodeWidget(),
               SizedBox(height: 10),
               TotalCalculationWidget(),
-              CartCheckoutButton(press: () {
+              CartCheckoutButton(press: () async {
                 User user = context.read<User>();
-                order.placeOrder(
+                await order.placeOrder(
                   user.uid,
                   cart.items.values.toList(),
                   cart.totalAmount,
                 );
-                cart.clear();
+
+                Address address = await order.getLocationAddress();
+
+                String username = user.displayName;
+                String pincode = address.postalCode;
+                String city = address.locality;
+                String state = address.adminArea;
+                String addressLine = address.addressLine.split(", ")[0] +
+                    ", " +
+                    address.addressLine.split(", ")[1];
+
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CheckoutPage(
+                        username,
+                        addressLine,
+                        city,
+                        pincode,
+                        state,
+                      );
+                    },
+                  ),
+                );
               })
             ],
           ),

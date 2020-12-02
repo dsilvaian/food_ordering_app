@@ -15,6 +15,7 @@ import 'screens/auth/login_page.dart';
 import 'screens/cart/cart-screen.dart';
 import 'screens/home/home-screen.dart';
 import 'components/sidebar/sidebar_layout.dart';
+import 'screens/checkout/checkout.dart';
 
 // import 'package:food_ordering_app/screens/home/home-screen.dart';
 
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           home: LoginPage(),
           // home: HomeScreen(),
           // home: SideBarLayout(),
-          // home: CartPage(),
+          // home: CheckoutPage(),
         ));
   }
 }

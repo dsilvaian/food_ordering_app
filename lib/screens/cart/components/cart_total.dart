@@ -29,6 +29,27 @@ class TotalCalculationWidget extends StatelessWidget {
                 trailing: Text("\$$unitPrice"),
               );
             }),
+        SizedBox(
+          height: 10,
+        ),
+        ListTile(
+          title: Text(
+            "Delivery",
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          trailing: Text(
+            "\$0",
+            style: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.w300,
+              fontSize: 16,
+            ),
+          ),
+        ),
         ListTile(
           title: Text("Total"),
           trailing: Text(

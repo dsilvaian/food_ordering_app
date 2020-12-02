@@ -82,12 +82,6 @@ class Order with ChangeNotifier {
               message = "Order Placed"
             });
 
-    LocationData coords = await getLocationCoords();
-    await getAddress(Coordinates(
-      coords.latitude,
-      coords.longitude,
-    ));
-
     notifyListeners();
     return message;
   }
@@ -157,8 +151,20 @@ class Order with ChangeNotifier {
     return coords;
   }
 
-  Future<String> getAddress(Coordinates coords) async {
+  Future<Address> getAddress(Coordinates coords) async {
     final address = await Geocoder.local.findAddressesFromCoordinates(coords);
-    return address.first.addressLine;
+    return address.first;
+  }
+
+  Future<Address> getLocationAddress() async {
+    LocationData coords = await getLocationCoords();
+    Address address = await getAddress(Coordinates(
+      coords.latitude,
+      coords.longitude,
+    ));
+
+    print(address.toMap().toString());
+
+    return address;
   }
 }
