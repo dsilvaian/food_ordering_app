@@ -4,7 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_ordering_app/services/cart_service.dart';
 import 'package:food_ordering_app/services/auth_service.dart';
+import 'package:geocoder/geocoder.dart';
 import 'package:uuid/uuid.dart';
+
+import 'package:location/location.dart';
 
 class OrderItem {
   final String orderId;
@@ -78,6 +81,13 @@ class Order with ChangeNotifier {
                       )),
               message = "Order Placed"
             });
+
+    LocationData coords = await getLocationCoords();
+    await getAddress(Coordinates(
+      coords.latitude,
+      coords.longitude,
+    ));
+
     notifyListeners();
     return message;
   }
@@ -112,5 +122,43 @@ class Order with ChangeNotifier {
               })
             });
     notifyListeners();
+  }
+
+  Future<LocationData> getLocationCoords() async {
+    Location _location = Location();
+
+    bool _isLocServiceEnabled;
+    PermissionStatus _locPermissionGranted;
+
+    // Check if Location Service is Enabled
+    _isLocServiceEnabled = await _location.serviceEnabled();
+
+    if (!_isLocServiceEnabled) {
+      _isLocServiceEnabled = await _location.requestService();
+
+      if (!_isLocServiceEnabled) {
+        return null;
+      }
+    }
+
+    // Check if location Permission is Granted by the user
+    _locPermissionGranted = await _location.hasPermission();
+
+    if (_locPermissionGranted == PermissionStatus.denied) {
+      _locPermissionGranted = await _location.requestPermission();
+
+      if (_locPermissionGranted != PermissionStatus.granted) {
+        return null;
+      }
+    }
+
+    // Get Location Co-ordinates
+    final coords = await _location.getLocation();
+    return coords;
+  }
+
+  Future<String> getAddress(Coordinates coords) async {
+    final address = await Geocoder.local.findAddressesFromCoordinates(coords);
+    return address.first.addressLine;
   }
 }
