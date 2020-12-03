@@ -38,6 +38,12 @@ dependencies:
 
   provider: ^4.3.2+2
   rxdart: ^0.24.1
+  uuid: ^2.2.2
+
+  geocoder: ^0.2.1
+  location: ^3.1.0
+  flutter_local_notifications: ^3.0.1+6
+  # geolocation: ^1.1.2
 
 dev_dependencies:
   flutter_test:

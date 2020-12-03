@@ -6,19 +6,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'constraints.dart';
-import 'screens/cart/cart_model.dart';
+
+import 'services/cart_service.dart';
 import 'services/auth_service.dart';
+import 'services/order_service.dart';
+import 'services/notification_service.dart';
 
 import 'screens/auth/login_page.dart';
 import 'screens/cart/cart-screen.dart';
 import 'screens/home/home-screen.dart';
 import 'components/sidebar/sidebar_layout.dart';
+import 'screens/checkout/checkout.dart';
 
 // import 'package:food_ordering_app/screens/home/home-screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -37,7 +42,11 @@ class MyApp extends StatelessWidget {
           StreamProvider(
             create: (context) => context.read<AuthService>().authStateChanges,
           ),
+          Provider<NotificationService>(
+            create: (_) => NotificationService(),
+          ),
           ChangeNotifierProvider.value(value: Cart()),
+          ChangeNotifierProvider.value(value: Order()),
         ],
         child: MaterialApp(
           title: 'Food App',
@@ -53,7 +62,7 @@ class MyApp extends StatelessWidget {
           home: LoginPage(),
           // home: HomeScreen(),
           // home: SideBarLayout(),
-          // home: CartPage(),
+          // home: CheckoutPage(),
         ));
   }
 }

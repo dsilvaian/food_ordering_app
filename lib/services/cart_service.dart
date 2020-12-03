@@ -13,6 +13,13 @@ class CartItem {
     @required this.quantity,
     @required this.price,
   });
+
+  Map toJson() => {
+        "id": id,
+        "name": name,
+        "quantity": quantity,
+        "price": price,
+      };
 }
 
 class Cart with ChangeNotifier {
@@ -30,7 +37,7 @@ class Cart with ChangeNotifier {
       _items.update(
           productId,
           (existingItem) => CartItem(
-              id: DateTime.now().toString(),
+              id: productId,
               name: existingItem.name,
               quantity: existingItem.quantity + 1,
               price: existingItem.price));
@@ -103,5 +110,10 @@ class Cart with ChangeNotifier {
       total += cartItem.price * cartItem.quantity;
     });
     return total;
+  }
+
+  void clear() {
+    _items = {};
+    notifyListeners();
   }
 }
