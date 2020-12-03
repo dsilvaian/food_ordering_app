@@ -63,52 +63,54 @@ class CheckoutPage extends StatelessWidget {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AddressForm(
-              formKey: _formKey,
-              name: name,
-              addressLine: addressLine,
-              city: city,
-              pincode: pincode,
-              state: state,
-            ),
-            TotalCalculationWidget(),
-            PlaceOrderButton(
-              press: () async {
-                if (!_formKey.currentState.validate()) {
-                  return;
-                }
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AddressForm(
+                formKey: _formKey,
+                name: name,
+                addressLine: addressLine,
+                city: city,
+                pincode: pincode,
+                state: state,
+              ),
+              TotalCalculationWidget(),
+              PlaceOrderButton(
+                press: () async {
+                  if (!_formKey.currentState.validate()) {
+                    return;
+                  }
 
-                _formKey.currentState.save();
+                  _formKey.currentState.save();
 
-                User user = context.read<User>();
-                String orderId = await order.placeOrder(
-                  user.uid,
-                  cart.items.values.toList(),
-                  cart.totalAmount,
-                );
+                  User user = context.read<User>();
+                  String orderId = await order.placeOrder(
+                    user.uid,
+                    cart.items.values.toList(),
+                    cart.totalAmount,
+                  );
 
-                cart.clear();
+                  cart.clear();
 
-                final notifP = context.read<NotificationService>();
-                notifP.sendNotification(
-                  "Order Placed",
-                  "Your Order #$orderId has been placed.",
-                  "$orderId",
-                );
+                  final notifP = context.read<NotificationService>();
+                  notifP.sendNotification(
+                    "Order Placed",
+                    "Your Order #$orderId has been placed.",
+                    "$orderId",
+                  );
 
-                await Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SideBarLayout();
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
+                  await Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SideBarLayout();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
