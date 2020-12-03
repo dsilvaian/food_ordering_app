@@ -75,7 +75,9 @@ class CheckoutPage extends StatelessWidget {
                 pincode: pincode,
                 state: state,
               ),
-              TotalCalculationWidget(),
+              TotalCalculationWidget(
+                displayItems: false,
+              ),
               PlaceOrderButton(
                 press: () async {
                   if (!_formKey.currentState.validate()) {

@@ -58,7 +58,9 @@ class CartPageBody extends StatelessWidget {
               ),
               PromoCodeWidget(),
               SizedBox(height: 10),
-              TotalCalculationWidget(),
+              TotalCalculationWidget(
+                displayItems: true,
+              ),
               CartCheckoutButton(press: () async {
                 User user = context.read<User>();
                 Address address = await order.getLocationAddress();

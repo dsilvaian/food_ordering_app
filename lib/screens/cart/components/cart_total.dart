@@ -4,6 +4,13 @@ import 'package:provider/provider.dart';
 import '../../../services/cart_service.dart';
 
 class TotalCalculationWidget extends StatelessWidget {
+  final bool displayItems;
+
+  TotalCalculationWidget({
+    Key key,
+    this.displayItems,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
@@ -13,22 +20,24 @@ class TotalCalculationWidget extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[
-        ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: cart.items.length,
-            itemBuilder: (context, index) {
-              String key = cart.items.keys.elementAt(index);
-              CartItem _item = cart.items[key];
+        displayItems
+            ? ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: cart.items.length,
+                itemBuilder: (context, index) {
+                  String key = cart.items.keys.elementAt(index);
+                  CartItem _item = cart.items[key];
 
-              final String unitName = _item.name;
-              final double unitPrice = _item.price * _item.quantity;
+                  final String unitName = _item.name;
+                  final double unitPrice = _item.price * _item.quantity;
 
-              return ListTile(
-                title: Text("$unitName"),
-                trailing: Text("\$$unitPrice"),
-              );
-            }),
+                  return ListTile(
+                    title: Text("$unitName"),
+                    trailing: Text("\$$unitPrice"),
+                  );
+                })
+            : SizedBox.shrink(),
         SizedBox(
           height: 10,
         ),
