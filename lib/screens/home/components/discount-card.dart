@@ -18,6 +18,7 @@ class DiscountCard extends StatelessWidget {
             "Offers & Discounts",
             style: TextStyle(
               fontWeight: FontWeight.bold,
+              fontSize: 18,
               color: kTextColor,
             ),
           ),
@@ -37,8 +38,8 @@ class DiscountCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFFFF961F).withOpacity(0.7),
-                    kPrimaryColor.withOpacity(0.7),
+                    Color(0xFFFF961F).withOpacity(0.8),
+                    kPrimaryColor.withOpacity(0.8),
                   ],
                 ),
               ),
@@ -58,7 +59,10 @@ class DiscountCard extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: "Get Discount of \n",
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             TextSpan(
                               text: "30% \n",
@@ -67,8 +71,76 @@ class DiscountCard extends StatelessWidget {
                             ),
                             TextSpan(
                               text: "on your First Order",
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20),
+            width: double.infinity,
+            height: 166,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("assets/images/pizza.jpg"),
+              ),
+            ),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFFFF961F).withOpacity(0.8),
+                    kPrimaryColor.withOpacity(0.8),
+                  ],
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: SvgPicture.asset(
+                        "assets/icons/pizza_logo.svg",
+                        color: Colors.white,
+                      ),
+                    ),
+                    Expanded(
+                      child: RichText(
+                        text: TextSpan(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: "Get Your \n",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "First Delivery Free \n",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            // TextSpan(
+                            //   text: "on your First Order or Free Delivery",
+                            //   style: TextStyle(fontSize: 16),
+                            // )
                           ],
                         ),
                       ),

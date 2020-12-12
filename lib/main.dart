@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Food App',
-          // debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: kPrimaryColor,
             scaffoldBackgroundColor: Colors.white,

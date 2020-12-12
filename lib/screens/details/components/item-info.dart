@@ -46,6 +46,17 @@ class ItemInfo extends StatelessWidget {
           ),
           OrderButton(press: () {
             cart.addItem(item["productId"], item["Item"], item["Price"]);
+            final itemName = item["Item"];
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "$itemName added to Cart",
+                  textAlign: TextAlign.center,
+                ),
+                backgroundColor: Colors.deepOrange,
+                // duration: ,
+              ),
+            );
           }),
         ],
       ),

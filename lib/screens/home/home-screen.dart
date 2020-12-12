@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       // key: _scaffoldKey,
       appBar: homeAppBar(context),
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
       body: SingleChildScrollView(
         child: Body(),
       ),

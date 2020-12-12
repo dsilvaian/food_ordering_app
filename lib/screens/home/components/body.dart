@@ -28,6 +28,9 @@ class Body extends StatelessWidget {
             }
           },
         ),
+        SizedBox(
+          height: 20,
+        ),
         DiscountCard(),
       ],
     );

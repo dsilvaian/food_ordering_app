@@ -35,14 +35,15 @@ PreferredSize homeAppBar(BuildContext context) {
               ),
             ),
             actions: <Widget>[
-              IconButton(
-                icon: SvgPicture.asset("assets/icons/notification.svg"),
-                onPressed: () {},
-              ),
+              // IconButton(
+              //   icon: SvgPicture.asset("assets/icons/notification.svg"),
+              //   onPressed: () {},
+              // ),
               IconButton(
                 icon: Icon(
-                  Icons.shopping_cart,
+                  Icons.shopping_cart_outlined,
                   size: 30,
+                  color: kPrimaryColor,
                 ),
                 onPressed: () {
                   Navigator.push(

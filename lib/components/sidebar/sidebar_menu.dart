@@ -8,6 +8,7 @@ import '../../services/auth_service.dart';
 
 import 'sidebar_menu_item.dart';
 import '../../screens/auth/login_page.dart';
+import '../../screens/cart/cart-screen.dart';
 
 class SideBarMenu extends StatelessWidget {
   final Function onMenuItemPressed;
@@ -69,19 +70,23 @@ class SideBarMenu extends StatelessWidget {
               onMenuItemPressed();
             }),
         SideBarMenuItem(
-          icon: Icons.shopping_bag,
-          title: "My Orders",
+          icon: Icons.shopping_cart,
+          title: "My Cart",
           onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CartPage()),
+            );
             onMenuItemPressed();
           },
         ),
-        SideBarMenuItem(
-          icon: Icons.person,
-          title: "My Account",
-          onTap: () {
-            onMenuItemPressed();
-          },
-        ),
+        // SideBarMenuItem(
+        //   icon: Icons.person,
+        //   title: "My Account",
+        //   onTap: () {
+        //     onMenuItemPressed();
+        //   },
+        // ),
         Divider(
           height: 64,
           thickness: 0.5,
